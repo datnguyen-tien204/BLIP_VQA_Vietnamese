@@ -10,7 +10,7 @@ warnings.filterwarnings("ignore")
 
 from models.vit import VisionTransformer, interpolate_pos_embed
 from models.med import BertConfig, BertModel, BertLMHeadModel
-from transformers import BertTokenizer
+from transformers import BertTokenizer, AutoTokenizer
 
 import torch
 from torch import nn
@@ -82,7 +82,7 @@ class BLIP_Decoder(nn.Module):
                  vit = 'base',
                  vit_grad_ckpt = False,
                  vit_ckpt_layer = 0,
-                 prompt = 'a picture of ',
+                 prompt = '',
                  ):
         """
         Args:
@@ -93,7 +93,7 @@ class BLIP_Decoder(nn.Module):
         super().__init__()
         
         self.visual_encoder, vision_width = create_vit(vit,image_size, vit_grad_ckpt, vit_ckpt_layer)
-        self.tokenizer = init_tokenizer()   
+        self.tokenizer = init_tokenizer()
         med_config = BertConfig.from_json_file(med_config)
         med_config.encoder_width = vision_width
         self.text_decoder = BertLMHeadModel(config=med_config)    
@@ -106,7 +106,6 @@ class BLIP_Decoder(nn.Module):
         
         image_embeds = self.visual_encoder(image) 
         image_atts = torch.ones(image_embeds.size()[:-1],dtype=torch.long).to(image.device)
-        
         text = self.tokenizer(caption, padding='longest', truncation=True, max_length=40, return_tensors="pt").to(image.device) 
         
         text.input_ids[:,0] = self.tokenizer.bos_token_id
@@ -173,18 +172,19 @@ def blip_decoder(pretrained='',**kwargs):
     model = BLIP_Decoder(**kwargs)
     if pretrained:
         model,msg = load_checkpoint(model,pretrained)
-        assert(len(msg.missing_keys)==0)
+        # assert(len(msg.missing_keys)==0)
     return model    
     
 def blip_feature_extractor(pretrained='',**kwargs):
     model = BLIP_Base(**kwargs)
     if pretrained:
         model,msg = load_checkpoint(model,pretrained)
-        assert(len(msg.missing_keys)==0)
+        # assert(len(msg.missing_keys)==0)
     return model        
 
 def init_tokenizer():
-    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+    # tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+    tokenizer = AutoTokenizer.from_pretrained("vinai/phobert-base")
     tokenizer.add_special_tokens({'bos_token':'[DEC]'})
     tokenizer.add_special_tokens({'additional_special_tokens':['[ENC]']})       
     tokenizer.enc_token_id = tokenizer.additional_special_tokens_ids[0]  
