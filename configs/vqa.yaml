@@ -1,6 +1,6 @@
 vqa_root: '/kaggle/Images/mscoco/' #followed by train2014/
 vg_root: ''
-train_files: ['vqa_train2014','vqa_val2014']
+train_files: ['vqa_train','vqa_val']
 ann_root: 'annotation'
 
 # set pretrained as a file path or an url
