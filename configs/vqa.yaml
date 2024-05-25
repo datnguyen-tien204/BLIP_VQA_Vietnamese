@@ -1,4 +1,4 @@
-vqa_root: '/kaggle/Images/mscoco/' #followed by train2014/
+vqa_root: '/kaggle/working/BLIP_VQA_Vietnamese/BLIP_VietNamese/preprocessing/Images' #followed by train2014/
 vg_root: ''
 train_files: ['vqa_train','vqa_val']
 ann_root: 'annotation'
@@ -14,7 +14,7 @@ vit_grad_ckpt: False
 vit_ckpt_layer: 0
 init_lr: 2e-5
 
-image_size: 480
+image_size: 128
 
 k_test: 128
 inference: 'rank'
@@ -22,4 +22,3 @@ inference: 'rank'
 # optimizer
 weight_decay: 0.05
 min_lr: 0
-max_epoch: 10
