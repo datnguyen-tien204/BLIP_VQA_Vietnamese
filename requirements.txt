@@ -3,4 +3,4 @@ transformers==4.15.0
 fairscale==0.4.4
 pycocoevalcap
 opencv-python==4.8.0.76
-ruamel_yaml
+ruamel.yaml==0.17.20
