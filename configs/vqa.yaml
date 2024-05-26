@@ -1,31 +1,24 @@
 vqa_root: '/kaggle/working/BLIP_VQA_Vietnamese/BLIP_VietNamese/preprocessing/Images' #followed by train2014/
-vg_root: ''
 train_files: ['vqa_train','vqa_val']
 ann_root: 'annotation'
 
 # set pretrained as a file path or an url
-pretrained: ''
+pretrained: 'https://storage.googleapis.com/sfr-vision-language-research/BLIP/models/model_base_vqa_capfilt_large.pth'
 
 # size of vit model; base or large
 vit: 'base'
-batch_size_train: 8
-batch_size_test: 8
+batch_size_train: 6
+batch_size_test: 6
 vit_grad_ckpt: False
 vit_ckpt_layer: 0
 init_lr: 2e-5
 med_config: '/kaggle/working/BLIP_VQA_Vietnamese/configs/med_config.json'
-    
-max_length: 20  
-min_length: 5
-num_beams: 3
 image_size: 384
 
-    
-    
 k_test: 128
 inference: 'rank'
 
 # optimizer
 weight_decay: 0.05
 min_lr: 0
-max_epoch: 5
+max_epoch: 8
