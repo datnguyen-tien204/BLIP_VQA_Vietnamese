@@ -19,6 +19,7 @@ class vqa_dataset(Dataset):
             self.annotation = []
             for f in train_files:
                 file_path = os.path.join(ann_root, f'{f}.json')
+                print("train_file_path", file_path)
                 if os.path.exists(file_path):
                     with open(file_path, 'r') as f:
                         self.annotation += json.load(f)
@@ -26,6 +27,7 @@ class vqa_dataset(Dataset):
                     raise FileNotFoundError(f"File {file_path} does not exist.")
         else:
             test_file_path = os.path.join(ann_root, 'vqa_test.json')
+            print("test_file_path", test_file_path)
             if os.path.exists(test_file_path):
                 with open(test_file_path, 'r') as f:
                     self.annotation = json.load(f)
