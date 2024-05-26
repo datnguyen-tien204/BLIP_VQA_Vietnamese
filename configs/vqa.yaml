@@ -8,14 +8,21 @@ pretrained: 'https://storage.googleapis.com/sfr-vision-language-research/BLIP/mo
 
 # size of vit model; base or large
 vit: 'base'
-batch_size_train: 16 
+batch_size_train: 2
 batch_size_test: 32 
 vit_grad_ckpt: False
 vit_ckpt_layer: 0
 init_lr: 2e-5
+med_config: '/kaggle/working/BLIP_VQA_Vietnamese/configs/med_config.json'
+    
+max_length: 20  
+min_length: 5
+num_beams: 3
+prompt: ''
+image_size: 384
 
-image_size: 128
-
+    
+    
 k_test: 128
 inference: 'rank'
 
