@@ -18,7 +18,6 @@ med_config: '/kaggle/working/BLIP_VQA_Vietnamese/configs/med_config.json'
 max_length: 20  
 min_length: 5
 num_beams: 3
-prompt: ''
 image_size: 384
 
     
