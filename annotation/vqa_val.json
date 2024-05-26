@@ -5514,7 +5514,7 @@
   {
     "": 689,
     "question_id": 235906,
-    "question": "gấu bắc cực ăn cà rốt ở đâu?",
+    "question": "gấu bắc cực ăn cà rốt ở đâu",
     "answer": "['vườn bách thú']",
     "image": "test2014/COCO_train2014_000000235906.jpg",
     "dataset": "vqa"
@@ -8210,7 +8210,7 @@
   {
     "": 1026,
     "question_id": 342165,
-    "question": "người đàn ông trên con ngựa là gì?",
+    "question": "người đàn ông trên con ngựa là gì",
     "answer": "['con bò']",
     "image": "test2014/COCO_val2014_000000342165.jpg",
     "dataset": "vqa"
@@ -20450,7 +20450,7 @@
   {
     "": 2556,
     "question_id": 529215,
-    "question": "hai người đang đi trong mưa trên đường ray đường sắt là gì?",
+    "question": "hai người đang đi trong mưa trên đường ray đường sắt là gì",
     "answer": "['chiếc ô']",
     "image": "test2014/COCO_val2014_000000529215.jpg",
     "dataset": "vqa"
