@@ -159,15 +159,15 @@ def main(args, config):
                          'epoch': epoch,
                         }                
             with open(os.path.join(args.output_dir, "log.txt"),"a") as f:
-                f.write(json.dumps(log_stats) + "\n")                        
-                    
-            save_obj = {
-                'model': model_without_ddp.state_dict(),
-                'optimizer': optimizer.state_dict(),
-                'config': config,
-                'epoch': epoch,
-            }
-            torch.save(save_obj, os.path.join(args.output_dir, 'checkpoint_%02d.pth'%epoch))  
+                f.write(json.dumps(log_stats) + "\n")    
+            if epoch%5==0:                   
+                save_obj = {
+                    'model': model_without_ddp.state_dict(),
+                    'optimizer': optimizer.state_dict(),
+                    'config': config,
+                    'epoch': epoch,
+                }
+                torch.save(save_obj, os.path.join(args.output_dir, 'checkpoint_%02d.pth'%epoch))  
 
         dist.barrier()         
 
