@@ -123,8 +123,6 @@ def main(args, config):
                                               collate_fns=[vqa_collate_fn,None]) 
     #### Model #### 
     print("Creating model")
-    #model = blip_vqa(pretrained=config['pretrained'], image_size=config['image_size'], vit=config['vit'], 
-                     #vit_grad_ckpt=config['vit_grad_ckpt'], vit_ckpt_layer=config['vit_ckpt_layer'],med_config = config['med_config'])
     model = blip_vqa(pretrained=config['pretrained'], image_size=config['image_size'], 
                        vit=config['vit'], vit_grad_ckpt=config['vit_grad_ckpt'], vit_ckpt_layer=config['vit_ckpt_layer'])
 
@@ -159,8 +157,9 @@ def main(args, config):
                          'epoch': epoch,
                         }                
             with open(os.path.join(args.output_dir, "log.txt"),"a") as f:
-                f.write(json.dumps(log_stats) + "\n")    
-            if epoch%5==0:                   
+                f.write(json.dumps(log_stats) + "\n")                        
+                    
+            if epoch % 5 == 0:  # Save the model every 5 epochs
                 save_obj = {
                     'model': model_without_ddp.state_dict(),
                     'optimizer': optimizer.state_dict(),
