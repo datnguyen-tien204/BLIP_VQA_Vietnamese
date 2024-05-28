@@ -123,11 +123,8 @@ def main(args, config):
                                               collate_fns=[vqa_collate_fn,None]) 
     #### Model #### 
     print("Creating model")
-    # model = blip_vqa(pretrained=config['pretrained'], image_size=config['image_size'], 
-    #                    vit=config['vit'], vit_grad_ckpt=config['vit_grad_ckpt'], vit_ckpt_layer=config['vit_ckpt_layer'])
-    model = blip_decoder(pretrained=config['pretrained'], image_size=config['image_size'], vit=config['vit'], 
-                           vit_grad_ckpt=config['vit_grad_ckpt'], vit_ckpt_layer=config['vit_ckpt_layer'], 
-                           prompt=config['prompt'], med_config = config['med_config'])
+    model = blip_vqa(pretrained=config['pretrained'], image_size=config['image_size'], 
+                       vit=config['vit'], vit_grad_ckpt=config['vit_grad_ckpt'], vit_ckpt_layer=config['vit_ckpt_layer'])
 
     model = model.to(device)   
     
