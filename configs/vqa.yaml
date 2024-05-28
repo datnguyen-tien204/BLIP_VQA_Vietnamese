@@ -16,10 +16,16 @@ init_lr: 2e-5
 med_config: '/kaggle/working/BLIP_VQA_Vietnamese/configs/med_config.json'
 image_size: 384
 
+
+max_length: 20  
+min_length: 5
+num_beams: 3
+prompt: ''
+
 k_test: 128
 inference: 'rank'
 
 # optimizer
 weight_decay: 0.05
 min_lr: 0
-max_epoch: 8
+max_epoch: 10
