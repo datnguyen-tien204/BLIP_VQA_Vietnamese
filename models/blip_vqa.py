@@ -43,11 +43,6 @@ class BLIP_VQA(nn.Module):
         question.input_ids[:, 0] = self.tokenizer.enc_token_id
 
         # Debugging information
-
-        # Thay thế các ID không hợp lệ bằng token [UNK]
-        invalid_mask = question.input_ids >= self.tokenizer.vocab_size
-        if torch.any(invalid_mask):
-            question.input_ids[invalid_mask] = self.tokenizer.unk_token_id
         if train:
             answer = self.tokenizer(answer, padding='longest', return_tensors="pt").to(image.device)
             answer.input_ids[:, 0] = self.tokenizer.bos_token_id
