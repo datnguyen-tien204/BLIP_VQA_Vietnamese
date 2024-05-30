@@ -4,7 +4,7 @@ vg_root: ''
 ann_root: 'annotation'
 
 # set pretrained as a file path or an url
-pretrained: ''
+pretrained: 'https://storage.googleapis.com/sfr-vision-language-research/BLIP/models/model_base_caption_capfilt_large.pth'
 
 # size of vit model; base or large
 vit: 'base'
@@ -12,7 +12,7 @@ batch_size_train: 5
 batch_size_test: 5
 vit_grad_ckpt: False
 vit_ckpt_layer: 0
-init_lr: 2e-5
+init_lr: 1e-5
 med_config: '/kaggle/working/BLIP_VQA_Vietnamese/configs/med_config.json'
 image_size: 384
 
