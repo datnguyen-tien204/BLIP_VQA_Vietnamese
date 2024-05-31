@@ -23,7 +23,7 @@ num_beams: 3
 prompt: ''
 
 k_test: 128
-inference: 'rank'
+inference: 'generate'
 
 # optimizer
 weight_decay: 0.05
