@@ -28,4 +28,4 @@ inference: 'generate'
 # optimizer
 weight_decay: 0.05
 min_lr: 0
-max_epoch: 1
+max_epoch: 25
